@@ -12,12 +12,12 @@ Un jeu de mémoire interactif, conçu pour explorer les mécanismes cognitifs hu
 - **Mode responsive** : Adapté à tous les appareils
 - **Confettis** pour célébrer la victoire 🎉
 
-🎮 Comment jouer ?
-Choisissez un niveau de difficulté et un thème
+## 🎮 Comment jouer ?
+- **Choisissez un niveau de difficulté et un thème
 
-Cliquez sur les cartes pour les retourner
+- **Cliquez sur les cartes pour les retourner
 
-Trouvez toutes les paires avec le moins de mouvements possible
+- **Trouvez toutes les paires avec le moins de mouvements possible
 
-Essayez d'obtenir le meilleur score !
+- **Essayez d'obtenir le meilleur score !
 
