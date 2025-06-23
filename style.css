@@ -1,0 +1,198 @@
+/* Variables CSS mises à jour avec des couleurs vibrantes */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4cc9f0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+    --danger-color: #f44336;
+    --border-radius: 16px;
+    --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  /* Grilles symétriques par niveau de difficulté */
+  .board.easy {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 600px;
+  }
+  
+  .board.medium {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 800px;
+  }
+  
+  .board.hard {
+    grid-template-columns: repeat(8, 1fr);
+    max-width: 1000px;
+  }
+  
+  /* Style des cartes avec emojis */
+  .card {
+    aspect-ratio: 1/1;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.5, 0, 0.5, 1);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+  
+  .card::before {
+    content: "❓";
+    position: absolute;
+    transition: var(--transition);
+  }
+  
+  .card.flipped::before {
+    opacity: 0;
+  }
+  
+  /* Thèmes avec emojis */
+  .card[data-theme="animaux"] .card-front::after {
+    content: attr(data-symbol);
+  }
+  
+  .card[data-theme="nature"] .card-front::after {
+    content: attr(data-symbol);
+    font-size: 2.8rem;
+  }
+  
+  .card[data-theme="emojis"] .card-front::after {
+    content: attr(data-symbol);
+    font-size: 3.2rem;
+  }
+  
+  .card[data-theme="aliments"] .card-front::after {
+    content: attr(data-symbol);
+    font-size: 2.8rem;
+  }
+  
+  /* Styles spécifiques pour chaque thème */
+  .theme-animaux .card-back {
+    background: linear-gradient(135deg, #ff9a8b 0%, #ff6b95 100%);
+  }
+  
+  .theme-nature .card-back {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  }
+  
+  .theme-emojis .card-back {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+  }
+  
+  .theme-aliments .card-back {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  }
+  
+  /* Animation de retournement */
+  @keyframes flipIn {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(90deg); }
+    100% { transform: rotateY(180deg); }
+  }
+  
+  .flipped {
+    animation: flipIn 0.6s forwards;
+  }
+  
+  /* Animation de match */
+  @keyframes matchAnimation {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    50% { transform: scale(1.05) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1); }
+  }
+  
+  .matched {
+    animation: matchAnimation 0.8s;
+    box-shadow: 0 0 20px rgba(76, 201, 240, 0.6);
+  }
+  
+  /* Effet hover amélioré */
+  .card:not(.flipped):not(.matched):hover {
+    transform: translateY(-8px) rotate(2deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Style des emojis dans les boutons */
+  .btn-easy::before {
+    content: "😊";
+    margin-right: 8px;
+  }
+  
+  .btn-medium::before {
+    content: "😐";
+    margin-right: 8px;
+  }
+  
+  .btn-hard::before {
+    content: "😰";
+    margin-right: 8px;
+  }
+  
+  .btn-primary::after {
+    content: "🔄";
+    margin-left: 8px;
+  }
+  
+  /* Emojis dans la modal de victoire */
+  #win-modal h2::after {
+    content: "🏆";
+    margin-left: 10px;
+  }
+  
+  #play-again::before {
+    content: "🕹️";
+    margin-right: 8px;
+  }
+  
+  /* Style des statistiques avec emojis */
+  .stat-box:nth-child(1)::before {
+    content: "↔️";
+    margin-right: 5px;
+  }
+  
+  .stat-box:nth-child(2)::before {
+    content: "⏱️";
+    margin-right: 5px;
+  }
+  
+  .stat-box:nth-child(3)::before {
+    content: "⭐";
+    margin-right: 5px;
+  }
+  
+  /* Responsive pour les grilles */
+  @media (max-width: 900px) {
+    .board.hard {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .board.medium {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .board.hard {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .board {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 0.8rem;
+    }
+    .card {
+      font-size: 2.2rem;
+    }
+  }
